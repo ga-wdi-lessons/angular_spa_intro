@@ -4,6 +4,8 @@
 ## Learning Objectives
 - Explain the difference between directives, models, and controllers in Angular
 
+<!-- NHO: Define how Angular utilizes modules -->
+
 ## Framing
 
 Single page apps (SPAs) are so hot right now. Single page does **not** necessarily mean:
@@ -27,9 +29,16 @@ Google is one big multi-page app that contains smaller SPAs, like Google Maps. S
 
 #### Why do people like SPAs?
 
+<!-- NHO: is this a question to pose to the class? Or are you planning on having more follow up to answer?  -->
+<!-- Could do a similar compare / contrast as was built into the previous spa lesson  -->
+<!--
+https://github.com/ga-dc/wdi6-formerly-curriculum/tree/7935ec8271d1d0372dd978be43fd75a015ef90a6/08-single-page-web-apps/single-page-applications  -->
+
+
 ### Angular
 
 Angular markets itself as being "what HTML would have been, had it been designed for building web apps."
+<!-- NHO: how does this tie into why people like SPA's?  -->
 
 Angular is considered a *framework*, not a library.,
 <!-- AM: ^ Extra comma at end of sentence ^ -->

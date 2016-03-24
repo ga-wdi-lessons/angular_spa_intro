@@ -19,7 +19,7 @@ Note that in your starter code all the files you'll be using have already been c
 The `angular.js` and `bootstrap.css` files are unminified, and therefore **ENORMOUS**. You should never have to open them, let alone modify them.
 
 ### Server
-
+<!-- NHO: What's ajax? -->
 Angular uses a lot of AJAX. When you're running an Angular app using `file://` on your computer, this can cause problems.
 
 We're going to download a handy little server that lets us run Angular using `http://`.
@@ -43,6 +43,8 @@ Available on:
 > Where will you go in your browser?
 
 From now on, we'll be accessing Angular this way.
+
+<!-- NHO: In commit one...  -->
 
 ## Added module and controller
 
@@ -120,11 +122,14 @@ It serves the same purpose: text inside handlebars is treated as executable Java
 `{{vm.hello}}` lets us access the `hello` property attached to `vm` inside the controller function.
 
 ### Review
+<!-- NHO: Are students answering these quietly to themselves or are you is this STWG?  -->
 
 - What's a directive?
 - What's a controller?
 - What's the purpose of putting `data-` at the beginning of a directive?
 - What is the Javascript equivalent of ERB's "clown hats"?
+
+<!-- NHO: Commit two...  -->
 
 ## Added ng repeat and a row for each product
 
@@ -152,6 +157,7 @@ Your browser tries to load `<img>` tags before it runs Javascript. If we used th
 
 -----
 
+<!-- NHO: commit 3...  -->
 ## Added index and number formatting
 
 #### $index
