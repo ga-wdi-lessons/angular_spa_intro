@@ -1,7 +1,10 @@
 # Angular and Single-Page Apps
 
 ## Learning Objectives
-- Explain the difference between directives, models, and controllers in Angular
+- Give an example of a single-page app and explain why its single-page-ness is important
+- Explain the difference between directives, models, modules, and controllers in Angular
+- Use Angular to display a collection of data with sorting and filtering
+- Give one reason why two-way data-binding is valuable
 
 ## Framing
 
@@ -29,7 +32,9 @@ Google is one big multi-page app that contains smaller SPAs, like Google Maps. S
 
 Angular markets itself as being "what HTML would have been, had it been designed for building web apps."
 
-Angular is considered a *framework*, not a library.,
+It has lots of functionality built in for rendering data, and swapping views in and out to give the impression of having multiple pages.
+
+Angular is considered a *framework*, not a library.
 
 #### What's the difference between a framework and a library?
 
@@ -38,6 +43,31 @@ Angular is all Javascript, just like jQuery is all Javascript, but it's very pic
 Confusingly, it uses a lot of the same words as Rails, but with different definitions. Please refer to [the comparison to Rails](#references) at the end of this lesson plan.
 
 To introduce Angular, we're going to *do* some Angular.
+
+## Setting up a server
+
+Angular uses a lot of AJAX -- Javascript making requests to another server. When you're viewing an Angular app using `file://` on your computer -- that is, without running it on a server -- this can cause problems.
+
+We're going to download a handy little server that lets us run Angular using `http://`.
+
+```bash
+$ cd inventory_tracker
+$ npm install -g hs
+$ hs
+```
+
+You should see something like:
+
+```
+Starting up http-server, serving ./
+Available on:
+  http:127.0.0.1:8080
+  http:172.20.8.228:8080
+```
+
+> Where will you go in your browser? For comparison, Rails says this `Listening on localhost:3000, CTRL+C to stop`
+
+From now on, we'll be accessing Angular this way.
 
 ## [We Do: Inventory Tracker Walkthrough](walkthrough.md)
 

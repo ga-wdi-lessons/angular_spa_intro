@@ -18,32 +18,11 @@ Note that in your starter code all the files you'll be using have already been c
 
 The `angular.js` and `bootstrap.css` files are unminified, and therefore **ENORMOUS**. You should never have to open them, let alone modify them.
 
-### Server
+# Commit-by-Commit
 
-Angular uses a lot of AJAX. When you're running an Angular app using `file://` on your computer, this can cause problems.
+Each of the headers below corresponds to one of the commits in the `angular-solution` branch of `inventory_tracker`.
 
-We're going to download a handy little server that lets us run Angular using `http://`.
-
-```bash
-$ cd inventory_tracker
-$ npm install -g hs
-$ hs
-```
-
-You should see something like:
-
-```
-Starting up http-server, serving ./
-Available on:
-  http:127.0.0.1:8080
-  http:172.20.8.228:8080
-```
-
-> Where will you go in your browser?
-
-From now on, we'll be accessing Angular this way.
-
-## Added module and controller
+## Commit: Added module and controller
 
 This is going to be the most "explain-y" step.
 
@@ -121,7 +100,7 @@ It serves the same purpose: text inside handlebars is treated as executable Java
 - What's the purpose of putting `data-` at the beginning of a directive?
 - What is the Javascript equivalent of ERB's "clown hats"?
 
-## Added ng repeat and a row for each product
+## Commit: Added ng repeat and a row for each product
 
 ### app.js
 
@@ -147,7 +126,7 @@ Your browser tries to load `<img>` tags before it runs Javascript. If we used th
 
 -----
 
-## Added index and number formatting
+## Commit: Added index and number formatting
 
 #### $index
 
@@ -159,7 +138,7 @@ By default, Javascript displays numbers without trailing zeroes. So if your bank
 
 This is native Javascript -- not Angular.
 
-## Added filter
+## Commit: Added filter
 
 #### data-ng-model
 
@@ -179,13 +158,13 @@ Note the pipe `|`!
 
 - What is two-way data binding?
 
-## Added total value calculator
+## Commit: Added total value calculator
 
 You can attach functions as well as properties to the controller instance, and reference them in the view. Any time there's a change to any of the data in the controller, the function will be re-evaluated.
 
 -----
 
-## Added sorting
+## Commit: Added sorting
 
 #### ng-click
 
@@ -201,7 +180,7 @@ So in this case, if `vm.sort_on` is `"name"`, Angular checks each `product` for 
 
 Note the pipe `|`!
 
-## Added ordering
+## Commit: Added ordering
 
 #### something = !(something)
 
@@ -223,7 +202,7 @@ The data inside the `ng-if` attribute is evaluated. If it's truthy, the element 
 
 `orderBy` can take a second argument. If this second argument is truthy, the items in `ng-repeat` are ordered in ascending order. Otherwise, they're ordered in descending order.
 
-## Combined ordering and sorting
+## Commit: Combined ordering and sorting
 
 Before, `ng-click` simply set a property equal to a value. Now it calls a function.
 
@@ -233,11 +212,11 @@ Before, `ng-click` simply set a property equal to a value. Now it calls a functi
 
 -----
 
-## Added delete button
+## Commit: Added delete button
 
 `.indexOf` finds the position of the product that was clicked in the `vm.data` array. `.splice` removes that product from the array.
 
-## Added create method
+## Commit: Added create method
 
 #### angular.copy
 
