@@ -38,6 +38,7 @@ Available on:
   http:127.0.0.1:8080
   http:172.20.8.228:8080
 ```
+<!-- AM: Could tie to `rails s`, either in lesson plan or in-class. Have them guess where to go in the browser. -->
 
 > Where will you go in your browser?
 
@@ -74,6 +75,8 @@ The second argument is the function that encloses all the functionality of the c
 
 The controller is an interface between your data and your view, as in Rails. In Rails, to make data show up in a view, we'd make it an instance variable, as in `@variable = "Some data"`. To do the same in Angular, we attach it to `this`, as in `this.variable = "Some data"`.
 
+<!-- AM: Any other key differences between a Rails and Angular controller they should know? Not a rhetorical question, but just want to make sure they're not confused by any conceptual differences between the two. -->
+
 #### VM
 
 In order to not "lose" `this`, I've saved it to a variable called `vm`. This variable can be named anything, but `vm` is convention.
@@ -81,6 +84,8 @@ In order to not "lose" `this`, I've saved it to a variable called `vm`. This var
 "VM" stands for "view model". Basically, it means "an object that contains the data you want to show up in your view, and also contains methods for people using the view to interact with the data."
 
 Here I've attached a property called `hello` to `vm`. In the `index.html`, we can reference `vm.hello` and get its data.
+
+<!-- AM: Students are always confused by the idea of a view model. Not sure if this lesson is the time/place to dive into it a little more and compare to the usual MVC model. -->
 
 ### index.html
 
@@ -178,6 +183,8 @@ Note the pipe `|`!
 ### Review
 
 - What is two-way data binding?
+
+<!-- AM: The more I think about it there should be a CFU for the view model. Reviewing it'll help. -->
 
 ## Added total value calculator
 

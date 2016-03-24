@@ -1,5 +1,6 @@
 # Angular and Single-Page Apps
 
+<!-- AM: More LOs? Maybe something about SPAs or important higher-level features of directives/models/controllers. -->
 ## Learning Objectives
 - Explain the difference between directives, models, and controllers in Angular
 
@@ -22,6 +23,7 @@ Some examples:
 - [Google Maps](https://www.google.com/maps/@38.9048728,-77.0362223,17z)
 
 Google is one big multi-page app that contains smaller SPAs, like Google Maps. Same for Trello and Pinterest.
+<!-- AM: Could use this as an opportunity to preview/tie back to the AJAX class. -->
 
 #### Why do people like SPAs?
 
@@ -30,6 +32,7 @@ Google is one big multi-page app that contains smaller SPAs, like Google Maps. S
 Angular markets itself as being "what HTML would have been, had it been designed for building web apps."
 
 Angular is considered a *framework*, not a library.,
+<!-- AM: ^ Extra comma at end of sentence ^ -->
 
 #### What's the difference between a framework and a library?
 
@@ -54,3 +57,5 @@ To introduce Angular, we're going to *do* some Angular.
 | directive  | helper              |
 | service    | ActiveRecord::Base  |
 | view       | view                |
+
+<!-- AM: ^ I love these. ^ -->
