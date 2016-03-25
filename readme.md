@@ -51,8 +51,7 @@ Angular uses a lot of AJAX -- Javascript making requests to another server. When
 We're going to download a handy little server that lets us run Angular using `http://`.
 
 ```bash
-$ cd inventory_tracker
-$ npm install -g hs
+$ npm install -g http-server
 $ hs
 ```
 
@@ -63,6 +62,28 @@ Starting up http-server, serving ./
 Available on:
   http:127.0.0.1:8080
   http:172.20.8.228:8080
+```
+
+### If you run into trouble
+
+#### First, try:
+
+```
+$ sudo npm install -g http-server
+$ hs
+```
+
+#### If that doesn't work:
+
+```
+$ brew uninstall node
+$ brew install node
+# wait...
+$ sudo chown -R "$(whoami)" /usr/local
+# wait...
+$ brew link --overwrite node
+$ sudo npm install -g http-server
+$ hs
 ```
 
 > Where will you go in your browser? For comparison, Rails says this `Listening on localhost:3000, CTRL+C to stop`
