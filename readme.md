@@ -105,3 +105,8 @@ From now on, we'll be accessing Angular this way.
 | directive  | helper              |
 | service    | ActiveRecord::Base  |
 | view       | view                |
+
+### Screencasts
+- WDI8
+  - [Part 1](https://youtu.be/e05pA3VSM6I)
+  - [Part 2](https://youtu.be/MP2RD5d9RfA)
