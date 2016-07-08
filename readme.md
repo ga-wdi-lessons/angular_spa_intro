@@ -13,7 +13,7 @@ Today we will be diving into our first front end framework by building a dynamic
 But first, let's talk about why we are doing this.
 
 <details>
-<summary> What do we mean by Single Page App?</summary>
+<summary> What do we mean by the term Single Page App?</summary>
 
 > While there's no uniform definition, in essence Single Page Applications are Web apps that load a single HTML page
 and dynamically update that page as the user interacts with the app. SPAs use AJAX and
@@ -21,7 +21,7 @@ HTML5 to create fluid and responsive web apps, without constant page reloads.
 
 </details>
 
-In comparison to the traditional web apps we've been working with so far, SPAs are characterized by
+<br>
 
 Important to note, single page does **not** necessarily mean:
 
@@ -34,7 +34,9 @@ It **does** mean:
 <details>
 <summary>Why do we do this?</summary>
 
+```
 In short, to give the user a more "native" experience for web-based applications.
+```
 
 </details>
 
