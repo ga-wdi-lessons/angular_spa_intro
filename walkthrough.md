@@ -35,6 +35,8 @@ The layout of this file looks pretty strange. Two things may be new to you. They
 
 #### Components
 
+Building an Angular app is a lot like  playing with Legos, in that we will mostly just be putting together a bunch of special pieces to construct a complex structure.
+
 An Angular app is made of modules. A module is made of components. This Angular app has just one module, and that model has one component: a controller.
 
 These components are always declared in a chain that begins with `angular`. Here we have `angular.module().controller()`. It's written on separate lines only for readability.
