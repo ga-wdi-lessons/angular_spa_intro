@@ -8,7 +8,22 @@
 
 ## Framing
 
-Single page apps (SPAs) are so hot right now. Single page does **not** necessarily mean:
+Today we will be diving into our first front end framework by building a dynamic Single Page App with Angular.
+
+But first, let's talk about why we are doing this.
+
+<details>
+<summary> What do we mean by Single Page App?</summary>
+
+> While there's no uniform definition, in essence Single Page Applications are Web apps that load a single HTML page
+and dynamically update that page as the user interacts with the app. SPAs use AJAX and
+HTML5 to create fluid and responsive web apps, without constant page reloads.
+
+</details>
+
+In comparison to the traditional web apps we've been working with so far, SPAs are characterized by
+
+Important to note, single page does **not** necessarily mean:
 
 > The user sees everything on one page.
 
@@ -16,7 +31,12 @@ It **does** mean:
 
 > The user never *actually* goes to a different page in their browser, but they may *feel* like they do. There's one main `index.html` page, and then other "pages" are really just pieces of HTML that are loaded in and out as necessary.
 
-There's no single definition of a SPA.
+<details>
+<summary>Why do we do this?</summary>
+
+In short, to give the user a more "native" experience for web-based applications.
+
+</details>
 
 Some examples:
 
