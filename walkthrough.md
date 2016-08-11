@@ -218,7 +218,7 @@ Before, `ng-click` simply set a property equal to a value. Now it calls a functi
 
 ## Commit: Added delete button
 
-`.indexOf` finds the position of the product that was clicked in the `vm.data` array. `.splice` removes that product from the array.
+`.indexOf` finds the position of the product that was clicked in the `vm.data` array. `.splice` removes that product from the array. So in this example, we could have used `<td data-ng-click="vm.destroy(vm.indexOf())">&cross;</td>` instead of `<td data-ng-click="vm.destroy($index)">&cross;</td>`.
 
 ## Commit: Added create method
 
