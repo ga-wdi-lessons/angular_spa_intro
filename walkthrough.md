@@ -148,6 +148,8 @@ This creates **two-way data binding** between the `value` of an `input` or `text
 
 This is a fancy way of saying: "If the data for `vm.filter_on` changes in the back-end, I want that change to show up automatically in this `<input>` element. If the data for `vm.filter_on` changes in this `<input>` element, I want that change to be saved automatically in the back-end." There's no need to "refresh" -- it all happens under the hood without you having to worry.
 
+Note: Typically, your data will be coming from the backend but in this example, you are working with static data in the frontend.
+
 #### filter: vm.filter_on
 
 Try typing something in the "Filter on..." text field!
@@ -222,9 +224,17 @@ Before, `ng-click` simply set a property equal to a value. Now it calls a functi
 
 #### angular.copy
 
-This duplicates an object.
+This duplicates an object. It's useful when you want to save a value at a certain point when the variable could later be modified.
 
-### Review
-
-- Why is it necessary to `copy` the product? What happens if you replace `angular.copy(vm.new_product)` with simply `vm.new_product`?
-- What happens if you remove the second `vm.new_product = {}`? The first?
+```js
+var x = {name: ‘john’};
+var y = x;
+x.name = “bob”;
+y.name   //this is 'bob'
+```
+```js
+var x = {name: ‘john’};
+y= angular.copy(x)
+x.name = “bob”;
+y.name   //this is ‘john’
+```
