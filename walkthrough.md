@@ -235,7 +235,7 @@ Note the pipe `|`!
 
 Out updated index.html:
 
-```
+```html
 <main data-ng-controller="inventory_controller as vm">
       <h2>Total Value: ${{vm.total_value()}}</h2>
       <input type="text" class="form-control" placeholder="Filter on..." data-ng-model="vm.filter_on" />
