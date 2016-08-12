@@ -9,17 +9,15 @@
 ## Framing
 
 Today we will be diving into our first front end framework by building a dynamic Single Page App with Angular.
-
 But first, let's talk about why we are doing this.
 
-<details>
-<summary> What do we mean by the term Single Page App?</summary>
+What do we mean by the term Single Page App?
 
-> While there's no uniform definition, in essence Single Page Applications are Web apps that load a single HTML page
+While there's no uniform definition, in essence Single Page Applications are Web apps that load a single HTML page
 and dynamically update that page as the user interacts with the app. SPAs use AJAX and
 HTML5 to create fluid and responsive web apps, without constant page reloads.
 
-</details>
+
 
 <br>
 
@@ -31,8 +29,8 @@ It **does** mean:
 
 > The user never *actually* goes to a different page in their browser, but they may *feel* like they do. There's one main `index.html` page, and then other "pages" are really just pieces of HTML that are loaded in and out as necessary.
 
-<details>
-<summary>Why do we do this?</summary>
+
+Why do we do this?
 
 ```
 In short, to give the user a more "native" experience for web-based applications.
