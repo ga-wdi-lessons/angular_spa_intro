@@ -41,6 +41,24 @@ An Angular app is made of modules. A module is made of components. This Angular 
 
 These components are always declared in a chain that begins with `angular`. Here we have `angular.module().controller()`. It's written on separate lines only for readability.
 
+Here's the bit of code we're starting off with in our app.js.
+
+```js
+"use strict";
+
+(function(){
+  angular
+  .module("inventory", [])
+  .controller("inventory_controller", InventoryController);
+
+  function InventoryController(){
+    var vm = this;
+    vm.hello = "Hello, world!";
+  }
+})();
+```
+Let's break it down.
+
 #### .module
 
 The first argument is the "name" of this app.
@@ -79,6 +97,8 @@ In Angular, an app is an instance of a module. This directive tells Angular that
 
 If you have only one app on a page, you can put `ng-app` in your `body` tag.
 
+`<body class="container" data-ng-app="inventory">`
+
 #### data-ng-controller
 
 A page can have multiple apps, and an app can have multiple controllers.
@@ -87,6 +107,8 @@ A page can have multiple apps, and an app can have multiple controllers.
 
 `inventory_controller as vm` says we want to create a new instance of this controller and save it to a variable called `vm`. This variable could be named anything; I've chosen `vm` so it matches the `vm` inside the controller's function.
 
+`<main data-ng-controller="inventory_controller as vm">`
+
 #### {{handlebars}}
 
 ERBs use clownhats (`<%= %>`); most Javascript libraries use "handlebars" syntax (or moustache syntax).
@@ -94,6 +116,8 @@ ERBs use clownhats (`<%= %>`); most Javascript libraries use "handlebars" syntax
 It serves the same purpose: text inside handlebars is treated as executable Javascript. However, `{{}}` can only **return** data -- there's no `{{ vm.array.each do }}`!
 
 `{{vm.hello}}` lets us access the `hello` property attached to `vm` inside the controller function.
+
+`<h2>{{vm.hello}}</h2>`
 
 ### Review
 
@@ -126,6 +150,34 @@ The reason we use this instead of `href` is HTML validators will throw an error 
 
 Your browser tries to load `<img>` tags before it runs Javascript. If we used the usual `src` attribute your console would be full of errors caused by your browser trying to load `product.image_url` before it's run the Javascript necessary to figure out what `product.image_url` is.
 
+Here's where we update our index.html.
+
+```html
+      <tbody>
+          <tr data-ng-repeat="product in vm.data">
+            <td>.</td>
+            <td>
+              <img data-ng-src="{{product.image_url}}" alt="#" />
+              <a data-ng-href="{{product.url}}" tabindex="-1">{{product.name}}</a>
+            </td>
+            <td>${{product.cost}}</td>
+            <td>
+              <input type="number" />
+            </td>
+            <td>{{product.country}}</td>
+            <td>
+              <input type="text" />
+            </td>
+          </tr>
+        </tbody>```
+
+And our updated InventoryController function:
+
+```js
+function InventoryController(){
+  var vm = this;
+  vm.data = data;
+}```
 -----
 
 ## Commit: Added index and number formatting
@@ -139,6 +191,28 @@ Inside any `ng-repeat`, you automatically have access to a variable called `$ind
 By default, Javascript displays numbers without trailing zeroes. So if your bank account balance is $1.00, it would display `$1`. `toFixed(2)` tells Javascript to include the trailing zeroes, up to 2 places.
 
 This is native Javascript -- not Angular.
+
+Here's our updated index.html:
+
+```html        
+      <tbody>
+          <tr data-ng-repeat="product in vm.data">
+            <td>{{$index + 1}}</td>
+            <td>
+              <img data-ng-src="{{product.image_url}}" alt="#" />
+              <a data-ng-href="{{product.url}}" tabindex="-1">{{product.name}}</a>
+            </td>
+            <td>${{product.cost.toFixed(2)}}</td>
+            <td>
+              <input type="number" />
+            </td>
+            <td>{{product.country}}</td>
+            <td>
+              <input type="text" />
+            </td>
+          </tr>
+        </tbody>
+  ```
 
 ## Commit: Added filter
 
@@ -158,6 +232,44 @@ Try typing something in the "Filter on..." text field!
 
 Note the pipe `|`!
 
+Out updated index.html:
+
+```html
+<main data-ng-controller="inventory_controller as vm">
+      <h2>Total Value: $0.00</h2>
+      <input type="text" class="form-control" placeholder="Filter on..." data-ng-model="vm.filter_on" />
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <td>a-z</td>
+            <th>Name</th>
+            <th>Cost</th>
+            <th>Quantity</th>
+            <th>Country of Origin</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-ng-repeat="product in vm.data | filter: vm.filter_on">
+            <td>{{$index + 1}}</td>
+            <td>
+              <img data-ng-src="{{product.image_url}}" alt="#" />
+              <a data-ng-href="{{product.url}}" tabindex="-1">{{product.name}}</a>
+            </td>
+            <td>${{product.cost.toFixed(2)}}</td>
+            <td>
+              <input type="number" />
+            </td>
+            <td>{{product.country}}</td>
+            <td>
+              <input type="text" data-ng-model="product.notes" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+    ```
+
 ### Review
 
 - What is two-way data binding?
@@ -165,6 +277,28 @@ Note the pipe `|`!
 ## Commit: Added total value calculator
 
 You can attach functions as well as properties to the controller instance, and reference them in the view. Any time there's a change to any of the data in the controller, the function will be re-evaluated.
+
+Our updated InventoryController function is app.js:
+
+```js
+function InventoryController(){
+  var vm = this;
+  vm.data = data;
+  vm.total_value = function(){
+    var total = 0;
+    vm.data.forEach(function(product){
+      if(product.quantity){
+        total += (product.quantity * product.cost);
+      }
+    });
+    return total.toFixed(2);
+  }
+}
+```
+
+Applying to our index.html:
+
+`<h2>Total Value: ${{vm.total_value()}}</h2>`
 
 -----
 
@@ -184,6 +318,21 @@ So in this case, if `vm.sort_on` is `"name"`, Angular checks each `product` for 
 
 Note the pipe `|`!
 
+```html
+<thead>
+  <tr>
+    <td>a-z</td>
+    <th data-ng-click="vm.sort_on = 'name'">Name</th>
+    <th data-ng-click="vm.sort_on = 'cost'">Cost</th>
+    <th data-ng-click="vm.sort_on = 'quantity'">Quantity</th>
+    <th data-ng-click="vm.sort_on = 'country'">Country of Origin</th>
+    <th>Notes</th>
+  </tr>
+</thead>
+<tbody>
+  <tr data-ng-repeat="product in vm.data | filter: vm.filter_on | orderBy: vm.sort_on">
+```
+
 ## Commit: Added ordering
 
 #### something = !(something)
@@ -198,6 +347,7 @@ if(something !== false){
 }
 ```
 
+
 #### ng-if
 
 The data inside the `ng-if` attribute is evaluated. If it's truthy, the element is shown. If it's falsy, the element is not shown.
@@ -206,9 +356,67 @@ The data inside the `ng-if` attribute is evaluated. If it's truthy, the element 
 
 `orderBy` can take a second argument. If this second argument is truthy, the items in `ng-repeat` are ordered in ascending order. Otherwise, they're ordered in descending order.
 
+Our updated index.html:
+
+```html
+<tr>
+  <td data-ng-click="vm.is_descending = !(vm.is_descending)">
+    <span data-ng-if="vm.is_descending">z-a</span>
+    <span data-ng-if="!vm.is_descending">a-z</span>
+  </td>
+  <th data-ng-click="vm.sort_on = 'name'">Name</th>
+  <th data-ng-click="vm.sort_on = 'cost'">Cost</th>
+  <th data-ng-click="vm.sort_on = 'quantity'">Quantity</th>
+  <th data-ng-click="vm.sort_on = 'country'">Country of Origin</th>
+  <th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr data-ng-repeat="product in vm.data | filter: vm.filter_on | orderBy: vm.sort_on : vm.is_descending">
+```
+
 ## Commit: Combined ordering and sorting
 
 Before, `ng-click` simply set a property equal to a value. Now it calls a function.
+
+Our updated index.html
+
+```html
+<tr>
+  <td data-ng-click="vm.is_descending = !(vm.is_descending)">
+    <span data-ng-if="vm.is_descending">z-a</span>
+    <span data-ng-if="!vm.is_descending">a-z</span>
+  </td>
+  <th data-ng-click="vm.sort_data_by('name')">Name</th>
+  <th data-ng-click="vm.sort_data_by('cost')">Cost</th>
+  <th data-ng-click="vm.sort_data_by('quantity')">Quantity</th>
+  <th data-ng-click="vm.sort_data_by('country')">Country of Origin</th>
+  <th>Notes</th>
+</tr>
+```
+
+Our updated InventoryController function:
+
+```js
+function InventoryController(){
+  var vm = this;
+  vm.data = data;
+  vm.sort_data_by = function(name){
+    vm.sort_on = name;
+    vm.is_descending = !(vm.is_descending);
+  }
+  vm.total_value = function(){
+    var total = 0;
+    vm.data.forEach(function(product){
+      if(product.quantity){
+        total += (product.quantity * product.cost);
+      }
+    });
+    return total.toFixed(2);
+  }
+}
+
+```
 
 ### Review
 
@@ -220,11 +428,43 @@ Before, `ng-click` simply set a property equal to a value. Now it calls a functi
 
 `.indexOf` finds the position of the product that was clicked in the `vm.data` array. `.splice` removes that product from the array. So in this example, we could have used `<td data-ng-click="vm.destroy(vm.indexOf())">&cross;</td>` instead of `<td data-ng-click="vm.destroy($index)">&cross;</td>`.
 
+Our index.html:
+```html
+<td data-ng-click="vm.destroy($index)">&cross;</td>
+```
+
+Our updated InventoryController function
+
+```js
+function InventoryController(){
+  var vm = this;
+  vm.data = data;
+  vm.sort_data_by = function(name){
+    vm.sort_on = name;
+    vm.is_descending = !(vm.is_descending);
+  }
+  vm.total_value = function(){
+    var total = 0;
+    vm.data.forEach(function(product){
+      if(product.quantity){
+        total += (product.quantity * product.cost);
+      }
+    });
+    return total.toFixed(2);
+  }
+  vm.destroy = function(product_index){
+    vm.data.splice(product_index, 1);
+  }
+}
+```
+
 ## Commit: Added create method
 
 #### angular.copy
 
 This duplicates an object. It's useful when you want to save a value at a certain point when the variable could later be modified.
+
+Example:
 
 ```js
 var x = {name: ‘john’};
@@ -237,4 +477,38 @@ var x = {name: ‘john’};
 y= angular.copy(x)
 x.name = “bob”;
 y.name   //this is ‘john’
+```
+
+Our index.html:
+
+`<td data-ng-click="vm.create()">&plus;</td>`
+
+Our updated InventoryController function:
+
+```js
+function InventoryController(){
+  var vm = this;
+  vm.data = data;
+  vm.sort_data_by = function(name){
+    vm.sort_on = name;
+    vm.is_descending = !(vm.is_descending);
+  }
+  vm.total_value = function(){
+    var total = 0;
+    vm.data.forEach(function(product){
+      if(product.quantity){
+        total += (product.quantity * product.cost);
+      }
+    });
+    return total.toFixed(2);
+  }
+  vm.destroy = function(product_index){
+    vm.data.splice(product_index, 1);
+  }
+  vm.new_product = {};
+  vm.create = function(){
+    vm.data.push(angular.copy(vm.new_product));
+    vm.new_product = {};
+  }
+}
 ```

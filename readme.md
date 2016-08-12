@@ -8,7 +8,7 @@
 
 ## Framing
 
-Today we will be diving into our first front end framework by building a dynamic Single Page App with Angular. 
+Today we will be diving into our first front end framework by building a dynamic Single Page App with Angular.
 But first, let's talk about why we are doing this.
 
 What do we mean by the term Single Page App?
@@ -29,8 +29,8 @@ It **does** mean:
 
 > The user never *actually* goes to a different page in their browser, but they may *feel* like they do. There's one main `index.html` page, and then other "pages" are really just pieces of HTML that are loaded in and out as necessary.
 
-<details>
-<summary>Why do we do this?</summary>
+
+Why do we do this?
 
 ```
 In short, to give the user a more "native" experience for web-based applications.
