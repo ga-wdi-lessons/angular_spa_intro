@@ -177,7 +177,8 @@ And our updated InventoryController function:
 function InventoryController(){
   var vm = this;
   vm.data = data;
-}```
+}
+```
 -----
 
 ## Commit: Added index and number formatting
@@ -236,7 +237,7 @@ Out updated index.html:
 
 ```html
 <main data-ng-controller="inventory_controller as vm">
-      <h2>Total Value: $0.00</h2>
+      <h2>Total Value: ${{vm.total_value()}}</h2>
       <input type="text" class="form-control" placeholder="Filter on..." data-ng-model="vm.filter_on" />
       <table class="table table-striped">
         <thead>
@@ -258,7 +259,7 @@ Out updated index.html:
             </td>
             <td>${{product.cost.toFixed(2)}}</td>
             <td>
-              <input type="number" />
+              <input type="number" data-ng-model="product.quantity" />
             </td>
             <td>{{product.country}}</td>
             <td>
@@ -295,10 +296,6 @@ function InventoryController(){
   }
 }
 ```
-
-Applying to our index.html:
-
-`<h2>Total Value: ${{vm.total_value()}}</h2>`
 
 -----
 
