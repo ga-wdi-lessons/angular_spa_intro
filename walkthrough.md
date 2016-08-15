@@ -146,8 +146,6 @@ By default, Javascript displays numbers without trailing zeroes. So if your bank
 
 This is native Javascript -- not Angular.
 
-Here's our updated index.html:
-
 ## Commit: Added filter
 
 #### data-ng-model
